@@ -16,9 +16,9 @@ function AccueilStackScreen() {
   return (
     <AccueilStack.Navigator
       screenOptions={{
-        title: 'Accueil',
+        title: 'Version Alpha 0.11',
         headerStyle: {
-          backgroundColor: '#006',
+          backgroundColor: '#004',
         },
         headerTintColor: '#fff',
       }}
@@ -36,7 +36,7 @@ function RechercheStackScreen() {
       screenOptions={{
         title: 'Recherche',
         headerStyle: {
-          backgroundColor: '#006',
+          backgroundColor: '#004',
         },
         headerTintColor: '#fff',
       }}
@@ -54,7 +54,7 @@ function MessagesStackScreen() {
       screenOptions={{
         title: 'Messages',
         headerStyle: {
-          backgroundColor: '#006',
+          backgroundColor: '#004',
         },
         headerTintColor: '#fff',
       }}
@@ -72,7 +72,7 @@ function NotificationsStackScreen() {
       screenOptions={{
         title: 'Notifications',
         headerStyle: {
-          backgroundColor: '#006',
+          backgroundColor: '#004',
         },
         headerTintColor: '#fff',
       }}
@@ -90,7 +90,7 @@ function ProfileStackScreen() {
       screenOptions={{
         title: 'Profile',
         headerStyle: {
-          backgroundColor: '#006',
+          backgroundColor: '#004',
         },
         headerTintColor: '#fff',
       }}
@@ -127,7 +127,7 @@ function MyTab() {
           },
         })}
         tabBarOptions={{
-          activeTintColor: '#009',
+          activeTintColor: '#007',
           inactiveTintColor: 'gray',
         }}>
       <Tab.Screen name="Accueil" component={AccueilStackScreen} />

@@ -23,7 +23,7 @@ export default function AccueilScreen({ navigation }) {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: '#006',
+		backgroundColor: '#004',
 		alignItems: 'center',
 		justifyContent: 'center'
 	}
