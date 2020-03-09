@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import { StyleSheet, SectionList, Text, View, Button } from 'react-native'
+import { createStackNavigator } from '@react-navigation/stack';
 
+
+// Element des Options d'utilisateur
 class OptionsList extends Component {
 	render() {
 		return (
@@ -18,15 +21,7 @@ class OptionsList extends Component {
 	}
 }
 
-export default function ProfileScreen({ navigation }) {
-  return (
-    <View style={styles.container}>
-    	<OptionsList />
-    </View>
-  );
-}
-
-
+// StyleSheet des Components Profile
 const styles = StyleSheet.create({
   container: {
    flex: 1,
@@ -46,3 +41,32 @@ const styles = StyleSheet.create({
     height: 44,
   },
 })
+
+// Création des Screens
+function ProfileScreen({ navigation }) {
+  return (
+    <View style={styles.container}>
+    	<OptionsList />
+    </View>
+  );
+}
+
+
+// Exportation du Stack Nav
+const ProfileStack = createStackNavigator();
+
+export default function ProfileStackScreen() {
+  return (
+    <ProfileStack.Navigator
+      screenOptions={{
+        title: 'Profile',
+        headerStyle: {
+          backgroundColor: '#004',
+        },
+        headerTintColor: '#fff',
+      }}
+    >
+      <ProfileStack.Screen name="Profile" component={ProfileScreen} />
+    </ProfileStack.Navigator>
+  );
+}
