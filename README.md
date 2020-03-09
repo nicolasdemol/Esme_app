@@ -17,7 +17,7 @@ This is an application, mobile-ready, online-storage, powered React-Native.
   
   ### Tech
   
-* React-Navtive
+* React-Native
 * React-Navigation
 * Expo
 * Node
