@@ -17,11 +17,21 @@ This is an application, mobile-ready, online-storage, powered React-Native.
   
   ### Tech
   
-* [AngularJS] - HTML enhanced for web apps!
-* [React-Navigation]
-* [jQuery] - duh[Ace Editor] - awesome web-based text editor
-* [markdown-it] - Markdown parser done right. Fast and easy to extend.
-* [Twitter Bootstrap] - great UI boilerplate for modern web apps
-* [node.js] - evented I/O for the backend
-* [Express] - fast node.js network app framework [@tjholowaychuk]
-* [Gulp] - the streami
+* React-Navtive
+* React-Navigation
+* Expo
+* Node
+* TypeScript
+* Babel
+* Vector-Icons
+
+### Installation
+
+ESME APP requires NodeJs v4+ to run.
+
+Install the dependencies and devDependencies and start the server.
+
+```sh
+$ cd esme
+$ expo start
+```
