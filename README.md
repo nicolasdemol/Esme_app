@@ -12,7 +12,7 @@ This is an application, mobile-ready, online-storage, powered React-Native.
   
   - A simple and refined navigation bar to go to each interface
   - A home page with a logo only
-  - A search bar (non-functional)
+  - A search bar (non-functional) ..soon...
   - A list of user options
   
   ### Tech
