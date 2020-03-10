@@ -84,7 +84,7 @@ function RechercheScreen({ navigation }) {
 function RechercheNavScreen({navigation}) {
 	return (
 		<View style={styles.container} >
-		<Text>Liste des anciennes recherches effectuées</Text>
+		<Text>Liste des Anciennes recherches effectuées</Text>
 		</View>
 	);
 }
