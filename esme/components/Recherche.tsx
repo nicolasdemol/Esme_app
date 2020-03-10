@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
-import { SearchBar, Button } from 'react-native-elements'
+import { StyleSheet, StatusBar, Text, View, TouchableWithoutFeedback,TouchableOpacity } from 'react-native'
+import { SearchBar, Button, Input } from 'react-native-elements'
 import { createStackNavigator } from '@react-navigation/stack';
 import { Ionicons } from '@expo/vector-icons';
 
@@ -20,15 +20,34 @@ class Search extends Component {
     return (
       <SearchBar
       	lightTheme
+      	placeholderTextColor={'#aaa'}
       	containerStyle={{
-      		backgroundColor: 'white'
+      		backgroundColor: 'transparent',
       	}}
       	inputContainerStyle={{
-      		backgroundColor: '#eee'
+      		backgroundColor: 'transparent',
+      		paddingRight: 205,
       	}}
-        placeholder="..."
+      	inputStyle={{
+      		color: 'black'
+      	}}
+      	selectionColor='lightblue'
+      	autoFocus
+        placeholder="Rechercher"
         onChangeText={this.updateSearch}
         value={search}
+        searchIcon={false}
+        rightIconContainerStyle={{
+        	position: 'absolute',
+        	right: 0,
+        }}
+        clearIcon={<Button 
+        	icon={<Ionicons name={'ios-close'} size={40} color={'black'} />}
+        	buttonStyle={{
+        		backgroundColor: 'transparent'
+        	}}
+        	onPress={ () => this.setState({search: ''})}
+        />}
       />
     );
   }
@@ -53,33 +72,20 @@ const styles = StyleSheet.create({
 // Creation des Screens
 const RechercheStack = createStackNavigator();
 
+
 function RechercheScreen({ navigation }) {
   return (
    	<View style={styles.container}>
    		<Text>Zone de recherche non détaillée</Text>
-   		<Button 
-   			type='solid'
-   			icon={
-   			<Ionicons
-      			name="ios-search"
-      			size={30}
-      			color='white'
-      		/>
-      		}
-      		buttonStyle={{
-      			padding: 10
-
-      		}}
-    		title="Rechercher" 
-    		onPress={() => navigation.navigate('Recherche2')}
-    		/>
    	</View>
   );
 }
 
-function RechercheScreen2({navigation}) {
+function RechercheNavScreen({navigation}) {
 	return (
-		<Search />
+		<View style={styles.container} >
+		<Text>Anciennes recherches effectuées</Text>
+		</View>
 	);
 }
 
@@ -88,16 +94,62 @@ function RechercheScreen2({navigation}) {
 export default function RechercheStackScreen() {
   return (
     <RechercheStack.Navigator
-      screenOptions={{
-        title: 'Recherche',
-        headerStyle: {
-          backgroundColor: '#004',
-        },
-        headerTintColor: '#fff',
-      }}
-    >
-      <RechercheStack.Screen name="Recherche" component={RechercheScreen} />
-      <RechercheStack.Screen name="Recherche2" component={RechercheScreen2} />
+    screenOptions={{
+    	animationEnabled: false
+    }}>
+      <RechercheStack.Screen 
+      	name="Recherche" 
+      	component={RechercheScreen}
+      	options={({ navigation }) => ({
+      		headerTitle: null,
+      		headerRight: props => <Button
+      			type='clear'
+      			icon={<Ionicons name={'ios-apps'} size={28} color={'black'} />}
+      			TouchableComponent={TouchableOpacity}
+      			buttonStyle={{
+      				paddingLeft: 20,
+      				marginRight: 5,
+      			}}
+      			/>,
+      		headerLeft: props => <Button
+      			icon={<Ionicons name={'ios-search'} size={28} color={'black'} />}
+      			type='clear'
+      			title='Rechercher'
+      			TouchableComponent={TouchableWithoutFeedback}
+      			titleStyle={{
+      				fontFamily: 'sans-serif',
+      				fontSize: 18,
+      				color: '#aaa',
+      				paddingLeft: 10,
+      				marginBottom: 1.5,
+      				paddingRight: 165,
+      			}}
+      			buttonStyle={{
+      				marginLeft: 5,
+      			}}
+      			onPress={() => navigation.navigate('RechercheNav')}
+      			/>,
+      	})}
+      />
+      <RechercheStack.Screen 
+      	name="RechercheNav" 
+      	component={RechercheNavScreen} 
+      	options={({navigation: { goBack }}) => ({
+      		headerTitle: props => <Search />,
+      		headerTitleContainerStyle: {
+      			left: 45
+      		},
+      		headerLeft: props => <Button 
+      		icon={<Ionicons name={'ios-arrow-round-back'} size={44} color={'black'} />}
+      		buttonStyle={{
+      			paddingLeft: 15,
+      			paddingRight: 13,
+      			backgroundColor: 'transparent'
+      		}}
+      		onPress={() => goBack()}
+      		/>,
+      	})}
+      />
     </RechercheStack.Navigator>
   );
 }
