@@ -76,7 +76,7 @@ const RechercheStack = createStackNavigator();
 function RechercheScreen({ navigation }) {
   return (
    	<View style={styles.container}>
-   		<Text>Zone de recherche non détaillée</Text>
+   		<Text>Zone de Calendrier / Agenda</Text>
    	</View>
   );
 }
@@ -84,7 +84,7 @@ function RechercheScreen({ navigation }) {
 function RechercheNavScreen({navigation}) {
 	return (
 		<View style={styles.container} >
-		<Text>Anciennes recherches effectuées</Text>
+		<Text>Liste des anciennes recherches effectuées</Text>
 		</View>
 	);
 }

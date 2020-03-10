@@ -41,7 +41,7 @@ export default function AccueilStackScreen() {
   return (
     <AccueilStack.Navigator
       screenOptions={{
-        title: 'Version Alpha 0.12',
+        title: 'Version Alpha 0.13',
         headerStyle: {
           backgroundColor: '#004',
         },
