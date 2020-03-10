@@ -2,7 +2,7 @@
 
 This is an application, mobile-ready, online-storage, powered React-Native.
 
-  - Including a personal space to access its ESME student data
+  - Including a personal space to access its ESME student data like Calendar, Marks...
   - Including a discussion space for asking questions to other students or teachers
   - User can search for information, student or even former student from smart search
   
@@ -12,7 +12,7 @@ This is an application, mobile-ready, online-storage, powered React-Native.
   
   - A simple and refined navigation bar to go to each interface
   - A home page with a logo only
-  - A search bar (non-functional) ..soon...
+  - A search bar with Calendar (non-functional) ..soon...
   - A list of user options
   
   ### Tech
