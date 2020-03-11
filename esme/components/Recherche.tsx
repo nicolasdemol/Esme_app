@@ -1,7 +1,8 @@
-import React, { Component } from 'react'
-import { StyleSheet, StatusBar, Text, View, TouchableWithoutFeedback,TouchableOpacity } from 'react-native'
+import React, { Component } from 'react';
+import { StyleSheet, StatusBar, Text, View, TouchableWithoutFeedback,TouchableOpacity } from 'react-native';
 import { SearchBar, Button, Input } from 'react-native-elements'
 import { createStackNavigator } from '@react-navigation/stack';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { Ionicons } from '@expo/vector-icons';
 
 // Element de la barre de Recherche
@@ -19,10 +20,11 @@ class Search extends Component {
 
     return (
       <SearchBar
-      	lightTheme
       	placeholderTextColor={'#aaa'}
       	containerStyle={{
       		backgroundColor: 'transparent',
+      		borderBottomColor: 'transparent',
+      		borderTopColor: 'transparent',
       	}}
       	inputContainerStyle={{
       		backgroundColor: 'transparent',
@@ -53,6 +55,8 @@ class Search extends Component {
   }
 }
 
+
+
 // StyleSheet des Components Recherche
 const styles = StyleSheet.create({
 	container: {
@@ -73,6 +77,7 @@ const styles = StyleSheet.create({
 const RechercheStack = createStackNavigator();
 
 
+// Interface de Calendrier
 function RechercheScreen({ navigation }) {
   return (
    	<View style={styles.container}>
@@ -81,11 +86,70 @@ function RechercheScreen({ navigation }) {
   );
 }
 
+// Creétion des Screens du Recent TopNav
+
+function Top({ navigation })  {
+	return (
+		<View style={styles.container}>
+			<Text>Listes  des Recherches Récentes</Text>
+		</View>
+	);
+}
+
+function recentCompte({ navigation })  {
+	return (
+		<View style={styles.container}>
+			<Text>Listes  des Recherches Récentes (pour Comptes)</Text>
+		</View>
+	);
+}
+
+function recentCalendrier({ navigation })  {
+	return (
+		<View style={styles.container}>
+			<Text>Listes  des Recherches Récentes (pour Calendrier)</Text>
+		</View>
+	);
+}
+
+// Création du Recent TopNav
+const Recent = createMaterialTopTabNavigator();
+
 function RechercheNavScreen({navigation}) {
 	return (
-		<View style={styles.container} >
-		<Text>Liste des Anciennes recherches effectuées</Text>
-		</View>
+		<Recent.Navigator
+	      initialRouteName="Top"
+	      timingConfig={{
+	      	duration: 100
+	      }}
+	      tabBarOptions={{
+	        activeTintColor: 'black',
+	        tabStyle: {
+	        	paddingTop: 0,
+	        	height: 40
+	        },
+	        inactiveTintColor: '#aaa',
+	        labelStyle: { fontWeight: 'bold', fontSize: 14, fontFamily: 'sans-serif' },
+	        pressColor: 'white',
+	        indicatorStyle:{ backgroundColor: 'black', height: 1},
+	      }}
+	    >
+	    <Recent.Screen
+	        name="Top"
+	        component={Top}
+	        options={{ tabBarLabel: 'Top' }}
+	    />
+	    <Recent.Screen
+	        name="Compte"
+	        component={recentCompte}
+	        options={{ tabBarLabel: 'Comptes' }}
+	    />
+	    <Recent.Screen
+	        name="Calendrier"
+	        component={recentCalendrier}
+	        options={{ tabBarLabel: 'Calendrier' }}
+	    />
+	    </Recent.Navigator>
 	);
 }
 
@@ -136,8 +200,12 @@ export default function RechercheStackScreen() {
       	component={RechercheNavScreen} 
       	options={({navigation: { goBack }}) => ({
       		headerTitle: props => <Search />,
+      		headerStyle:{ 
+      			shadowOpacity: 0, //remove shadow on IOS
+      			elevation: 0 //remove shadow android
+      		},
       		headerTitleContainerStyle: {
-      			left: 45
+      			left: 45,
       		},
       		headerLeft: props => <Button 
       		icon={<Ionicons name={'ios-arrow-round-back'} size={44} color={'black'} />}
